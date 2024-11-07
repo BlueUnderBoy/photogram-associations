@@ -12,7 +12,7 @@
 
 class Comment < ApplicationRecord
   validates(:commenter, { :presence => true })
-
+  belongs_to(:movie, class_name: "Movie", foreign_key: "movie_id")
   # Association accessor methods to define:
   
   ## Direct associations
