@@ -16,7 +16,15 @@ class Like < ApplicationRecord
     :uniqueness => { :scope => [:fan_id] }
   })
   belongs_to(:fan, class_name:"User", foreign_key:"fan_id")
-  belongs_to(:photo, class_name:"Photo", foreign_key:"photo_id")
+  belongs_to(:liked_photo, class_name:"Photo", foreign_key:"photo_id")
+  belongs_to(:fan_like,
+    class_name: "User",
+    foreign_key: "fan_id"
+  )
+  has_many(:fan_likes,
+    through: :photo_likes,
+    source: :fan_like
+  )
 
   # Association accessor methods to define:
   
