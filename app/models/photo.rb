@@ -17,7 +17,8 @@ class Photo < ApplicationRecord
   
   belongs_to(:poster, class_name:"User", foreign_key:"owner_id")
   has_many(:comments, class_name:"Comment", foreign_key:"photo_id")
-  has_many(:fan_likes, class_name:"Like", foreign_key:"photo_id")
+  has_many(:likes, class_name:"Like", foreign_key:"photo_id")
+  has_many(:fans, through: :likes, source: :fan)
 
   # Association accessor methods to define:
   

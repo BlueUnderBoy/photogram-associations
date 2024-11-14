@@ -13,7 +13,7 @@
 class Comment < ApplicationRecord
   validates(:commenter, { :presence => true })
 
-  belongs_to(:user, class_name: "User", foreign_key: "author_id")
+  belongs_to(:commenter, class_name: "User", foreign_key: "author_id")
   belongs_to(:photo, class_name: "Photo", foreign_key: "photo_id")
   # Association accessor methods to define:
   
